@@ -179,6 +179,33 @@ namespace Microsoft.AppCenter.Test.Channel
             }
         }
 
+        /// <summary>
+        /// Verify that allowing/disallowing network requests for channel group sets for all channels.
+        /// </summary>
+        [TestMethod]
+        public void TestSetNetworkRequestsAllowed()
+        {
+            const int numChannels = 5;
+            var channelMocks = new List<Mock>();
+            for (var i = 0; i < numChannels; ++i)
+            {
+                channelMocks.Add(new Mock<IChannelUnit>());
+            }
+            foreach (var mockedChannel in channelMocks.Select(mock => mock.Object as IChannelUnit))
+            {
+                _channelGroup.AddChannel(mockedChannel);
+            }
+            _channelGroup.IsNetworkRequestsAllowed = true;
+            _channelGroup.IsNetworkRequestsAllowed = false;
+
+            // Verify that IsNetworkRequestsAllowed property was called for all channels.
+            foreach (var channelMock in channelMocks.Select(mock => mock as Mock<IChannelUnit>))
+            {
+                channelMock.VerifySet(channel => channel.IsNetworkRequestsAllowed = true, Times.Once);
+                channelMock.VerifySet(channel => channel.IsNetworkRequestsAllowed = false, Times.Once);
+            }
+        }
+
         [TestMethod]
         public void TestDisposeChannelGroup()
         {

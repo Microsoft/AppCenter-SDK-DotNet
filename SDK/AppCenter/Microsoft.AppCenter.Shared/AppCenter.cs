@@ -101,6 +101,15 @@ namespace Microsoft.AppCenter
         }
 
         /// <summary>
+        /// Allow or disallow network requests.
+        /// </summary>
+        public static bool IsNetworkRequestsAllowed
+        {
+            get => PlatformIsNetworkRequestsAllowed;
+            set => PlatformIsNetworkRequestsAllowed = value;
+        }
+
+        /// <summary>
         ///     Set the custom user id.
         /// </summary>
         /// <param name="userId">Custom string to identify user. 256 characters or less.</param>

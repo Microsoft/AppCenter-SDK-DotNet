@@ -37,6 +37,7 @@ namespace Contoso.WinForms.Puppet.DotNetCore
             this.SaveSizeStorageButton = new System.Windows.Forms.Button();
             this.StorageMaxSizeLabel = new System.Windows.Forms.Label();
             this.AppCenterEnabled = new System.Windows.Forms.CheckBox();
+            this.AppCenterAllowNetworkRequests = new System.Windows.Forms.CheckBox();
             this.AnalyticsTab = new System.Windows.Forms.TabPage();
             this.EventBox = new System.Windows.Forms.GroupBox();
             this.TrackEvent = new System.Windows.Forms.Button();
@@ -92,6 +93,7 @@ namespace Contoso.WinForms.Puppet.DotNetCore
             // 
             this.AppCenterTab.Controls.Add(this.MiscGroupBox);
             this.AppCenterTab.Controls.Add(this.AppCenterEnabled);
+            this.AppCenterTab.Controls.Add(this.AppCenterAllowNetworkRequests);
             this.AppCenterTab.Location = new System.Drawing.Point(4, 22);
             this.AppCenterTab.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AppCenterTab.Name = "AppCenterTab";
@@ -137,7 +139,7 @@ namespace Contoso.WinForms.Puppet.DotNetCore
             // 
             // AppCenterEnabled
             // 
-            this.AppCenterEnabled.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.AppCenterEnabled.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AppCenterEnabled.Location = new System.Drawing.Point(8, 6);
             this.AppCenterEnabled.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -147,6 +149,19 @@ namespace Contoso.WinForms.Puppet.DotNetCore
             this.AppCenterEnabled.Text = "App Center Enabled";
             this.AppCenterEnabled.UseVisualStyleBackColor = true;
             this.AppCenterEnabled.CheckedChanged += new System.EventHandler(this.AppCenterEnabled_CheckedChanged);
+            // 
+            // AppCenterAllowNetworkRequests
+            // 
+            this.AppCenterAllowNetworkRequests.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AppCenterAllowNetworkRequests.Location = new System.Drawing.Point(8, 6);
+            this.AppCenterAllowNetworkRequests.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AppCenterAllowNetworkRequests.Name = "AppCenterAllowNetworkRequests";
+            this.AppCenterAllowNetworkRequests.Size = new System.Drawing.Size(360, 24);
+            this.AppCenterAllowNetworkRequests.TabIndex = 1;
+            this.AppCenterAllowNetworkRequests.Text = "Allow Network Requests";
+            this.AppCenterAllowNetworkRequests.UseVisualStyleBackColor = true;
+            this.AppCenterAllowNetworkRequests.CheckedChanged += new System.EventHandler(this.AppCenterAllowNetworkRequest_CheckedChanged);
             // 
             // AnalyticsTab
             // 
@@ -493,6 +508,7 @@ namespace Contoso.WinForms.Puppet.DotNetCore
         private System.Windows.Forms.TabPage AnalyticsTab;
         private System.Windows.Forms.TabPage CrashesTab;
         private System.Windows.Forms.CheckBox AppCenterEnabled;
+        private System.Windows.Forms.CheckBox AppCenterAllowNetworkRequests;
         private System.Windows.Forms.GroupBox EventBox;
         private System.Windows.Forms.CheckBox AnalyticsEnabled;
         private System.Windows.Forms.TextBox EventName;

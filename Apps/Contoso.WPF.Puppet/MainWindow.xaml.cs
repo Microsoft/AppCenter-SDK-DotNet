@@ -55,11 +55,13 @@ namespace Contoso.WPF.Puppet
             {
                 StorageMaxSize.Text = Settings.Default.StorageMaxSize.ToString();
             }
+            AppCenter.IsNetworkRequestsAllowed = Settings.Default.IsNetworkRequestsAllowed;
         }
 
         private void UpdateState()
         {
             AppCenterEnabled.IsChecked = AppCenter.IsEnabledAsync().Result;
+            AppCenterAllowNetworkRequests.IsChecked = AppCenter.IsNetworkRequestsAllowed;
             CrashesEnabled.IsChecked = Crashes.IsEnabledAsync().Result;
             AnalyticsEnabled.IsChecked = Analytics.IsEnabledAsync().Result;
             AnalyticsEnabled.IsEnabled = AppCenterEnabled.IsChecked.Value;
@@ -71,6 +73,16 @@ namespace Contoso.WPF.Puppet
             if (AppCenterEnabled.IsChecked.HasValue)
             {
                 AppCenter.SetEnabledAsync(AppCenterEnabled.IsChecked.Value).Wait();
+            }
+        }
+
+        private void AppCenterAllowNetworkRequests_Checked(object sender, RoutedEventArgs e)
+        {
+            if (AppCenterAllowNetworkRequests.IsChecked.HasValue)
+            {
+                AppCenter.IsNetworkRequestsAllowed = AppCenterAllowNetworkRequests.IsChecked.Value;
+                Settings.Default.IsNetworkRequestsAllowed = AppCenterAllowNetworkRequests.IsChecked.Value;
+                Settings.Default.Save();
             }
         }
 

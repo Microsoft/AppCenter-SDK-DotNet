@@ -2,6 +2,10 @@
 
 ## Version 4.2.1 (Under development)
 
+### AppCenter
+
+* **[Feature]** Add a `IsNetworkRequestsAllowed` API to block network requests.
+
 ### App Center Crashes
 
 #### WPF/WinForms
