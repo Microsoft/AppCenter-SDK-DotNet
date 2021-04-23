@@ -49,7 +49,7 @@ namespace Microsoft.AppCenter
         private long _storageMaxSize;
         private TaskCompletionSource<bool> _storageTaskCompletionSource;
 
-        // Allow or disallow network requests. True by the default.
+        // Allow or disallow network requests. True by default.
         private bool _networkRequestsAllowed = true;
 
         #region static
@@ -90,7 +90,7 @@ namespace Microsoft.AppCenter
         }
 
         /// <summary>
-        /// Allow or disallow network requests. True by the default.
+        /// Allow or disallow network requests. True by default.
         /// </summary>
         public static bool PlatformIsNetworkRequestsAllowed
         {
