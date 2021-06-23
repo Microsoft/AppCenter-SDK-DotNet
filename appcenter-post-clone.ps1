@@ -27,5 +27,3 @@ if (Test-Path $nugetFileName) {
   Remove-Item $nugetFileName
 }
 New-Item -Path . -Name $nugetFileName -Value $contentValue
-
-Get-Content $nugetFileName
