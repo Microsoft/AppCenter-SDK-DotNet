@@ -40,8 +40,9 @@ namespace Microsoft.AppCenter.Crashes
         {
         }
 
-        private static void PlatformTrackError(Exception exception, IDictionary<string, string> properties, ErrorAttachmentLog[] attachments)
+        private static Guid? PlatformTrackError(Exception exception, IDictionary<string, string> properties, ErrorAttachmentLog[] attachments)
         {
+            return null;
         }
 
         private static void PlatformUnsetInstance()

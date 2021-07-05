@@ -128,15 +128,16 @@ namespace Microsoft.AppCenter.Crashes
         /// <param name="exception">The .NET exception describing the handled error.</param>
         /// <param name="properties">Optional properties.</param>
         /// <param name="attachments">Optional attachments.</param>
-        public static void TrackError(Exception exception, IDictionary<string, string> properties = null, params ErrorAttachmentLog[] attachments)
+        public static Guid? TrackError(Exception exception, IDictionary<string, string> properties = null, params ErrorAttachmentLog[] attachments)
         {
             if (exception == null)
             {
                 AppCenterLog.Error(LogTag, "TrackError exception parameter cannot be null.");
+                return null;
             }
             else
             {
-                PlatformTrackError(exception, properties, attachments);
+                return PlatformTrackError(exception, properties, attachments);
             }
         }
 
