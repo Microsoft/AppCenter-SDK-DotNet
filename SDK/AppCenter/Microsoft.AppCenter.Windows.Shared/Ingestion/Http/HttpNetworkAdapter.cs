@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,7 +16,11 @@ namespace Microsoft.AppCenter.Ingestion.Http
     {
         internal const string ContentTypeValue = "application/json; charset=utf-8";
 
+        // used by the windows platform to override and force tls1.2
+        internal static readonly Func<HttpMessageHandler> HttpMessageHandlerOverride;
+
         private HttpClient _httpClient;
+
         private readonly object _lockObject = new object();
 
         // Exception codes (HResults) involving poor network connectivity:
@@ -46,7 +51,8 @@ namespace Microsoft.AppCenter.Ingestion.Http
                     {
                         return _httpClient;
                     }
-                    _httpClient = new HttpClient();
+
+                    _httpClient = HttpMessageHandlerOverride != null ? new HttpClient(HttpMessageHandlerOverride()) : new HttpClient();
                     return _httpClient;
                 }
             }
