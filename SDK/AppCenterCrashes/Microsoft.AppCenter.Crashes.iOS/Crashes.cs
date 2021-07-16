@@ -93,7 +93,7 @@ namespace Microsoft.AppCenter.Crashes
                     }
                 }
             }
-            MSACWrapperCrashesHelper.TrackModelException(GenerateiOSException(exception, false), propertyDictionary, attachmentArray);
+            MSACCrashes.TrackException(GenerateiOSException(exception, false), propertyDictionary, attachmentArray);
         }
 
         /// <summary>
@@ -141,9 +141,9 @@ namespace Microsoft.AppCenter.Crashes
             AppCenterLog.Info(LogTag, "Saved wrapper exception.");
         }
 
-        static MSACException GenerateiOSException(Exception exception, bool structuredFrames)
+        static MSACWrapperExceptionModel GenerateiOSException(Exception exception, bool structuredFrames)
         {
-            var msException = new MSACException();
+            var msException = new MSACWrapperExceptionModel();
             msException.Type = exception.GetType().FullName;
             msException.Message = exception.Message ?? "";
             msException.StackTrace = exception.StackTrace;
@@ -151,7 +151,7 @@ namespace Microsoft.AppCenter.Crashes
             msException.WrapperSdkName = WrapperSdk.Name;
 
             var aggregateException = exception as AggregateException;
-            var innerExceptions = new List<MSACException>();
+            var innerExceptions = new List<MSACWrapperExceptionModel>();
 
             if (aggregateException?.InnerExceptions != null)
             {
